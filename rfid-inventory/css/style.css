@@ -1,0 +1,109 @@
+/* ========== 基础 ========== */
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0 0 40px;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #f2f4f8; color: #2c3e50;
+}
+header {
+  background: linear-gradient(135deg, #1e5aa8, #2f7fd6);
+  color: #fff; padding: 22px 32px;
+}
+header h1 { margin: 0 0 6px; font-size: 22px; }
+.subtitle { margin: 0; opacity: .85; font-size: 13px; }
+
+.panel {
+  background: #fff; margin: 16px auto; padding: 18px 22px;
+  max-width: 1100px; border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.panel h2 { font-size: 16px; margin: 0 0 12px; color: #1e5aa8; }
+.hint { font-size: 12px; color: #8a94a6; }
+
+/* ========== 控制区 ========== */
+.controls { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.controls select { padding: 6px 10px; border: 1px solid #ccd4e0; border-radius: 6px; font-size: 14px; }
+.btn {
+  border: 1px solid #1e5aa8; background: #fff; color: #1e5aa8;
+  padding: 7px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;
+}
+.btn.primary { background: #1e5aa8; color: #fff; }
+.btn.small { padding: 4px 10px; font-size: 12px; margin-left: 6px; }
+.btn:hover { opacity: .85; }
+
+/* ========== 仪表盘 ========== */
+.dash-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+.scope-tag { font-size: 12px; color: #8a94a6; }
+.stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+.stat-card {
+  flex: 1; min-width: 110px; text-align: center; padding: 14px 8px;
+  border-radius: 8px; background: #f6f8fb; border-top: 3px solid #b8c4d6;
+}
+.stat-card.ok   { border-top-color: #27ae60; }
+.stat-card.warn { border-top-color: #e67e22; }
+.stat-card.bad  { border-top-color: #e74c3c; }
+.stat-card.muted{ border-top-color: #95a5a6; }
+.stat-value { font-size: 24px; font-weight: 700; }
+.stat-label { font-size: 12px; color: #7a8699; margin-top: 4px; }
+
+/* ========== 标签页 ========== */
+.tabs { max-width: 1100px; margin: 0 auto; display: flex; gap: 6px; }
+.tab-btn {
+  border: none; background: #dde4ee; color: #4a5568;
+  padding: 9px 20px; border-radius: 8px 8px 0 0; cursor: pointer; font-size: 14px;
+}
+.tab-btn.active { background: #fff; color: #1e5aa8; font-weight: 600; }
+.tab-panel { display: none; margin-top: 0; }
+.tab-panel.active { display: block; }
+
+/* ========== 分层树 ========== */
+details { margin: 6px 0; }
+summary { cursor: pointer; padding: 8px 10px; border-radius: 6px; font-size: 14px; }
+summary:hover { background: #eef3fa; }
+.lv1 > summary { background: #e8eef7; font-weight: 600; }
+.lv2 { margin-left: 22px; }
+.lv2 > summary { background: #f0f4fa; }
+.lv3 { margin-left: 22px; }
+.lv3 > summary { background: #f7f9fc; }
+.dim { color: #8a94a6; font-weight: 400; font-size: 12px; }
+.stats-line { font-size: 12px; color: #5a6678; margin-left: 8px; }
+.badge {
+  display: inline-block; min-width: 20px; text-align: center;
+  padding: 1px 6px; border-radius: 10px; font-size: 12px; margin: 0 2px;
+}
+.badge.ok    { background: #d5f5e3; color: #1e8449; }
+.badge.warn  { background: #fdebd0; color: #b9770e; }
+.badge.bad   { background: #fadbd8; color: #c0392b; }
+.badge.muted { background: #e5e8ec; color: #5a6678; }
+.badge.zero  { background: transparent; color: #b0b8c4; }
+
+/* ========== 明细表 ========== */
+.detail-table {
+  width: 100%; border-collapse: collapse; margin: 8px 0 14px;
+  font-size: 13px; background: #fff;
+}
+.detail-table th, .detail-table td {
+  border: 1px solid #e1e6ee; padding: 6px 10px; text-align: left;
+}
+.detail-table th { background: #f0f4fa; font-weight: 600; color: #4a5568; }
+.t-title { font-weight: 500; }
+.row-misplaced td { background: #fffaf2; }
+.row-missing td   { background: #fff5f4; }
+.row-unknown td   { background: #f4f4f4; color: #777; }
+
+/* ========== 清单分组块 ========== */
+.list-header {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 8px; margin-bottom: 10px; font-size: 14px;
+}
+.group-block {
+  border: 1px solid #e1e6ee; border-radius: 8px;
+  padding: 10px 14px; margin-bottom: 12px; background: #fcfdfe;
+}
+.group-block h4 { margin: 2px 0 8px; font-size: 14px; color: #1e5aa8; }
+.empty { color: #27ae60; padding: 10px 0; }
+
+@media print {
+  header, .tabs, .controls, .btn { display: none !important; }
+  .panel { box-shadow: none; }
+}

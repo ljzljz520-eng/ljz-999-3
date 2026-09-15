@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图书馆 RFID 盘点工具</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <h1>📡 图书馆 RFID 盘点工具</h1>
+  <p class="subtitle">馆藏 <b id="collectionSize">—</b> 册 ｜ 手持设备扫描 → 自动比对 → 分层报告</p>
+</header>
+
+<!-- 盘点控制区 -->
+<section class="panel">
+  <h2>① 选择盘点范围，开始扫描</h2>
+  <div class="controls">
+    <label>楼层：
+      <select id="scopeFloor" onchange="onFloorChange()">
+        <option value="">全部楼层</option>
+        <option value="1F">1F</option>
+        <option value="2F">2F</option>
+        <option value="3F">3F</option>
+      </select>
+    </label>
+    <label>书库：
+      <select id="scopeRoom"><option value="">全部书库</option></select>
+    </label>
+    <button class="btn primary" onclick="startScan()">▶ 开始模拟盘点</button>
+    <span class="hint">（实际部署时，此处对接手持 RFID 设备的扫描数据导入）</span>
+  </div>
+</section>
+
+<!-- 结果区 -->
+<div id="resultArea" style="display:none">
+  <section class="panel" id="dashboard"></section>
+
+  <nav class="tabs">
+    <button class="tab-btn active" onclick="switchTab('tabBrowse', this)">📂 分层浏览</button>
+    <button class="tab-btn" onclick="switchTab('tabMisplaced', this)">🔀 错架整理清单</button>
+    <button class="tab-btn" onclick="switchTab('tabMissing', this)">❓ 缺失清单</button>
+  </nav>
+
+  <section class="panel tab-panel active" id="tabBrowse">
+    <h2>② 按 楼层 → 书库 → 分类号 查看</h2>
+    <p class="hint">点击展开各级，查看该节点下的明细与统计。</p>
+    <div id="hierarchy"></div>
+  </section>
+
+  <section class="panel tab-panel" id="tabMisplaced">
+    <h2>③ 错架整理清单</h2>
+    <p class="hint">「按当前位置分组」便于到架取书；「按应归架位分组」便于上架归位。</p>
+    <div id="misplacedList"></div>
+  </section>
+
+  <section class="panel tab-panel" id="tabMissing">
+    <h2>④ 缺失图书清单</h2>
+    <p class="hint">系统状态为「在馆」但本次未扫到的图书，按楼层分组。</p>
+    <div id="missingList"></div>
+  </section>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/compare.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
